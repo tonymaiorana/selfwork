@@ -27,5 +27,48 @@ namespace Warmups
             }
 
         }
+        /// <summary>
+        /// Exercise 2 SleepingIn
+        /// </summary>
+        /// <param name="isWeekday"></param>
+        /// <param name="isVacation"></param>
+        /// <returns></returns>
+        /// 
+        /// <summary>
+        /// Exercise 3 SumDouble
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public int SumDouble(int a, int b)
+        {
+            if (a == b)
+            {
+                return (a + b)*2;
+
+            }
+  
+                return a + b;
+        }
+        /// <summary>
+        /// Exercise 4 Diff21
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int Diff21(int n)
+        {
+            if (n <= 21)
+            {
+              return Math.Abs(n - 21);
+            }
+
+            return Math.Abs(n - 21)*2;
+        }
+
+        public bool ParrotTrouble(bool isTalking, int hour)
+        {
+            
+
+        }
     }
 }
