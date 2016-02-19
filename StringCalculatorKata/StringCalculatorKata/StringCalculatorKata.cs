@@ -12,31 +12,37 @@ namespace StringCalculatorKata
         {
             int sum = 0;
 
-            string[] array = numbers.Split(',');
-
             if (numbers == "")
             {
                 return sum;
             }
 
-            else if (array.Length == 1)
-            {
-                sum = int.Parse(numbers);
-            }
+            /* int numbersInArray = array.Length; No Longer Needed */
 
-            else if (array.Length == 2)
+            char[] delimeters;
+            if (numbers.StartsWith("//")) //if string numbers starts with \\ 
             {
-                sum = int.Parse(array[0]) + int.Parse(array[1]);
+                string[] inputArray = numbers.Split('\n'); // split the string using delimeter defined as \n
+                string del = inputArray[0].Substring(2);  // define string del & call the first portion of array with 3rd character in the array which is *
+                char delimeter = char.Parse(del); // char delimeter  equals the variable del parsed
+                delimeters = new char[] {delimeter}; // 
+
+                numbers = inputArray[1];
             }
 
             else
             {
-                Console.WriteLine("You need to actually put a number in");
+                delimeters = new char[] {',', '\n'};
             }
 
-            array.Length;
+            string[] array = numbers.Split(delimeters);
 
 
+
+        foreach (string number in array)
+         {
+           sum += int.Parse(number);
+         }
             return sum;
         }
     }
