@@ -27,13 +27,22 @@ namespace Warmups
             }
 
         }
+
         /// <summary>
         /// Exercise 2 SleepingIn
         /// </summary>
         /// <param name="isWeekday"></param>
         /// <param name="isVacation"></param>
         /// <returns></returns>
-        /// 
+        public bool CanSleepIn(bool isWeekday, bool isVacation)
+        {
+            if (isWeekday && !isVacation)
+            {
+                return false;
+            }
+
+            return true;
+        }
         /// <summary>
         /// Exercise 3 SumDouble
         /// </summary>
@@ -64,11 +73,20 @@ namespace Warmups
 
             return Math.Abs(n - 21)*2;
         }
-
+        /// <summary>
+        /// Exercise 5 ParrotTrouble
+        /// </summary>
+        /// <param name="isTalking"></param>
+        /// <param name="hour"></param>
+        /// <returns></returns>
         public bool ParrotTrouble(bool isTalking, int hour)
         {
-            
+            if(isTalking && (hour < 7 || hour >= 20))
+            {
+                return true;
+            }
 
+            return false;
         }
     }
 }

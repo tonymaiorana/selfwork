@@ -46,5 +46,28 @@ namespace Warmups.Tests
 
 
         }
+        [TestCase(true, 6, true)]
+        [TestCase(true, 7, false)]
+        [TestCase(false, 6, false)]
+        public void parrotTrouble_Tests(bool isTalking, int hour, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.ParrotTrouble(isTalking, hour);
+            Assert.AreEqual(expectedResult, actual);
+
+
+        }
+
+        [TestCase(false, false, true)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, true)]
+        [TestCase(true, true, true)]
+        public void CanSleepIn_Tests(bool isWeekday, bool isVacation, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.CanSleepIn(isWeekday, isVacation);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
     }
 }
