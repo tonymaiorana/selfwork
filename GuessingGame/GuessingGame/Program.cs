@@ -16,7 +16,6 @@ namespace GuessingGame
             //Gets the Player's name
             Console.Write("Please Enter your Name: ");
             string name = Console.ReadLine();
-            int count = 0;
 
             bool keepPlaying = false;
             do
@@ -24,7 +23,6 @@ namespace GuessingGame
                 //creates a GamePlay Object
                 GamePlay game = new GamePlay();
                 keepPlaying = game.PlayRound(name);
-                count++;
             } while (keepPlaying);
 
         }
