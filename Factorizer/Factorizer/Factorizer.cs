@@ -20,6 +20,19 @@ namespace Factorizer
             if (int.TryParse(input, out num))
             {
                 Console.WriteLine("The factors of " + num + " are: ");
+                for(int factor = 1; factor * factor <= num; factor++) 
+                {
+                    if (num % factor == 0)
+                    {
+                        Console.WriteLine(factor);
+                    }
+
+                    if (factor*factor != num)
+                    {
+                        Console.WriteLine(num / factor);
+                    } 
+                }
+
             }
 
             else
