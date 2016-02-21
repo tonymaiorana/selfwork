@@ -88,5 +88,21 @@ namespace Warmups
 
             return false;
         }
+
+        /// <summary>
+        /// Exercise 06 Makes10
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public bool Makes10(int a, int b)
+        {
+            if ((a == 10) || (b == 10) || (a + b == 10))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

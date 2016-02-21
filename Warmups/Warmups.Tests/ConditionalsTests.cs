@@ -69,5 +69,15 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
+        [TestCase(9, 10, true)]
+        [TestCase(9, 9, false)]
+        [TestCase(1, 9, true)]
+        public void Makes10_Test(int a, int b, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.Makes10(a, b);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
     }
 }
