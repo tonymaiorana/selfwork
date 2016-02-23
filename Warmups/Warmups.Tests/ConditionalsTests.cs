@@ -79,5 +79,38 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
+        [TestCase(103, true)]
+        [TestCase(90, true)]
+        [TestCase(89, false)]
+        [TestCase(209, true)]
+        [TestCase(189, false)]
+        public void NearHundred_Test(int n, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.NearHundred(n);
+            Assert.AreEqual(actual, expectedResult);
+        }
+
+        [TestCase(1, -1, false, true)]
+        [TestCase(-1, 1, false, true)]
+        [TestCase(-4, -5, true, true)]
+        [TestCase(-4, -5, false, false)]
+        public void PosNeg_Test(int a, int b, bool negative, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.PosNeg(a, b, negative);
+            Assert.AreEqual(actual, expectedResult);
+        }
+
+        [TestCase("candy", "not candy")]
+        [TestCase("x", "not x")]
+        [TestCase("not bad", "not bad")]
+        public void NotString_Test(string s, string expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            string actual = cond.NotString(s);
+            Assert.AreEqual(expectedResult, actual);
+
+        }
     }
 }

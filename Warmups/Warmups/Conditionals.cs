@@ -104,5 +104,57 @@ namespace Warmups
 
             return false;
         }
+        /// <summary>
+        /// Exercise 07 NearHundred
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public bool NearHundred(int n)
+        {
+            if(Math.Abs(100-n)<=10 || (Math.Abs(200-n)<=10))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// Exercise 08 PosNeg
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="negative"></param>
+        /// <returns></returns>
+        /// 
+        public bool PosNeg(int a, int b, bool negative)
+        {
+            if(negative &&(a  < 0 && b < 0))
+            {
+                return true;
+            }
+            else if (!negative && (a < 0) ^ (b < 0))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// Exercise 09 NotString
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public string NotString(string s)
+        {
+            if(s.StartsWith("not"))
+            {
+                return s;
+            }
+
+            else
+            {
+                return  "not "+ s;
+            }
+        }
     }
 }
