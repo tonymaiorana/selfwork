@@ -266,15 +266,15 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
-        //[TestCase("Hello", true)]
-        //[TestCase("Heelle", true)]
-        //[TestCase("Heelele", false)]
-        //public void GotE_Test(string str, bool expectedResult)
-        //{
-        //    Conditionals cond = new Conditionals();
-        //    bool actual = cond.GotE(str);
-        //    Assert.AreEqual(expectedResult, actual);
-        //}
+        [TestCase("Hello", true)]
+        [TestCase("Heelle", true)]
+        [TestCase("Heelele", false)]
+        public void GotE_Test(string str, bool expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            bool actual = cond.GotE(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
 
         [TestCase("Hello", "HeLLO")]
         [TestCase("hi there", "hi thERE")]
@@ -283,6 +283,16 @@ namespace Warmups.Tests
         {
             Conditionals cond = new Conditionals();
             string actual = cond.EndUp(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("Miracle", 2, "Mrce")]
+        [TestCase("abcdefg", 2, "aceg")]
+        [TestCase("abcdefg", 3, "adg")]
+        public void EveryNth(string str, int n, string expectedResult)
+        {
+            Conditionals cond = new Conditionals();
+            string actual = cond.EveryNth(str, n);
             Assert.AreEqual(expectedResult, actual);
         }
         

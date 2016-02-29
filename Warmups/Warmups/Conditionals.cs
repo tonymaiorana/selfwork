@@ -60,8 +60,8 @@ namespace Warmups
                 return (a + b)*2;
 
             }
-  
-                return a + b;
+
+            return a + b;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Warmups
         {
             if (n <= 21)
             {
-              return Math.Abs(n - 21);
+                return Math.Abs(n - 21);
             }
 
             return Math.Abs(n - 21)*2;
@@ -87,7 +87,7 @@ namespace Warmups
         /// <returns></returns>
         public bool ParrotTrouble(bool isTalking, int hour)
         {
-            if(isTalking && (hour < 7 || hour >= 20))
+            if (isTalking && (hour < 7 || hour >= 20))
             {
                 return true;
             }
@@ -118,7 +118,7 @@ namespace Warmups
         /// <returns></returns>
         public bool NearHundred(int n)
         {
-            if(Math.Abs(100-n)<=10 || (Math.Abs(200-n)<=10))
+            if (Math.Abs(100 - n) <= 10 || (Math.Abs(200 - n) <= 10))
             {
                 return true;
             }
@@ -136,7 +136,7 @@ namespace Warmups
         /// 
         public bool PosNeg(int a, int b, bool negative)
         {
-            if(negative &&(a  < 0 && b < 0))
+            if (negative && (a < 0 && b < 0))
             {
                 return true;
             }
@@ -155,16 +155,17 @@ namespace Warmups
         /// <returns></returns>
         public string NotString(string s)
         {
-            if(s.StartsWith("not"))
+            if (s.StartsWith("not"))
             {
                 return s;
             }
 
             else
             {
-                return  "not "+ s;
+                return "not " + s;
             }
         }
+
         /// <summary>
         /// Exercise 10 MissingChar
         /// </summary>
@@ -204,6 +205,7 @@ namespace Warmups
                 return str;
             }
         }
+
         /// <summary>
         /// Exercise 12 Front3
         /// </summary>
@@ -251,7 +253,7 @@ namespace Warmups
         /// <returns></returns>
         public bool Multiple3or5(int number)
         {
-            if((number > 0) && (number % 3==0) || (number % 5 == 0))
+            if ((number > 0) && (number%3 == 0) || (number%5 == 0))
             {
                 return true;
             }
@@ -268,7 +270,7 @@ namespace Warmups
         /// <returns></returns>
         public bool StartHi(string str)
         {
-            if ( str.Length > 2 && str.StartsWith("hi "))
+            if (str.Length > 2 && str.StartsWith("hi "))
             {
                 return true;
             }
@@ -290,7 +292,7 @@ namespace Warmups
         /// <returns></returns>
         public bool IcyHot(int temp1, int temp2)
         {
-            if((temp1 >= 100) || (temp2 >= 100) && (temp1 <= 0 || temp2 <=0))
+            if ((temp1 >= 100) || (temp2 >= 100) && (temp1 <= 0 || temp2 <= 0))
             {
                 return true;
             }
@@ -305,7 +307,7 @@ namespace Warmups
         /// <returns></returns>
         public bool Between10and20(int a, int b)
         {
-            if(((a <= 20) && (a >= 10)) || ((b <=20) && (b >= 10)))
+            if (((a <= 20) && (a >= 10)) || ((b <= 20) && (b >= 10)))
             {
                 return true;
             }
@@ -322,7 +324,7 @@ namespace Warmups
         /// <returns></returns>
         public bool HasTeen(int a, int b, int c)
         {
-            if((a <= 19) && (a >= 13) ||(b <= 19) && (b >= 13) ||(c <= 19 && (c >= 13)))
+            if ((a <= 19) && (a >= 13) || (b <= 19) && (b >= 13) || (c <= 19 && (c >= 13)))
             {
                 return true;
             }
@@ -379,7 +381,7 @@ namespace Warmups
         /// <returns></returns>
         public string StartOz(string str)
         {
-            if(str.StartsWith("oz"))
+            if (str.StartsWith("oz"))
             {
                 string newString = str.Substring(0, 2);
                 return newString;
@@ -391,7 +393,7 @@ namespace Warmups
                 return newString;
             }
 
-           else if (str.StartsWith("o"))
+            else if (str.StartsWith("o"))
             {
                 string newString = "o";
                 return newString;
@@ -409,7 +411,7 @@ namespace Warmups
         /// <returns></returns>
         public int Max(int a, int b, int c)
         {
-           int max = 0;
+            int max = 0;
             if ((a > b) && (a > c))
             {
                 max = a;
@@ -439,7 +441,7 @@ namespace Warmups
             {
                 return 0;
             }
-                if ((a - 10) < (b - 10))
+            if ((a - 10) < (b - 10))
             {
                 return a;
             }
@@ -452,27 +454,55 @@ namespace Warmups
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        //public bool GotE(string str)
-        //{
-        //    if (str.Contains("e"))
-        //    {
-        //        int i = 0;
-        //       foreach(st "e"; i++)
-        //        {
+        public bool GotE(string str)
+        {
+            int i = 0;
+            foreach (char c in str)
+            {
+                if (c == 'e')
+                {
+                    i++;
+                }
+            }
+            if (i >= 1 && i <= 3)
+            {
+                return true;
+            }
+            return false;
+        }
 
-        //        }
-        //    }
-        //}
-
-        
+        /// <summary>
+        /// Exercise 26 EndUp
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string EndUp(string str)
         {
             if (str.Length > 3)
             {
-                return str.Substring(2).ToUpper();
+                return str.Substring(0, str.Length - 3) + str.Substring(str.Length - 3).ToUpper();
             }
             return str.ToUpper();
         }
 
+        /// <summary>
+        /// Exercise 27 EveryNth
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public string EveryNth(string str, int n)
+        {
+            string newString = "";
+            if (str != "")
+            {
+                for (int i = 0; i < str.Length; i += n)
+                {
+                    newString += str.Substring(i, 1);
+                }
+                return newString;
+            }
+            return str;
+        }
     }
 }
