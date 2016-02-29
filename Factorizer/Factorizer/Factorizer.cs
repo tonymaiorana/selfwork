@@ -19,19 +19,20 @@ namespace Factorizer
 
             if (int.TryParse(input, out num))
             {
-                Console.WriteLine("The factors of " + num + " are: ");
-                for(int factor = 1; factor * factor <= num; factor++) 
+
+                for (int i = num; i > 0; i--)
                 {
-                    if (num % factor == 0)
+                    if (num % i == 0)
                     {
-                        Console.WriteLine(factor);
+                        //make a list or array of all the factors "i"
                     }
 
-                    if (factor*factor != num)
-                    {
-                        Console.WriteLine(num / factor);
-                    } 
                 }
+                    
+                    if //(list or array of i, has 2 element then its prime)
+
+                    )
+                Console.WriteLine("The factors of " + num + " are: ");
 
             }
 
