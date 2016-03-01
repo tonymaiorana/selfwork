@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using NUnit.Framework;
 
 namespace Warmups.Tests
@@ -127,6 +128,86 @@ namespace Warmups.Tests
         {
             Strings test = new Strings();
             string actual = test.MiddleTwo(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("oddly", true)]
+        [TestCase("y", false)]
+        [TestCase("oddy", false)]
+        public void EndsWithLy_Test(string str, bool expectedResult)
+        {
+            Strings test = new Strings();
+            bool actual = test.EndsWithLy(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("Hello", 2, "Helo")]
+        [TestCase("Chocolate", 3, "Choate")]
+        [TestCase("Chocolate", 1, "Ce")]
+        public void FrontAndBack_Test(string str, int n, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.FrontAndBack(str, n);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("java", 0, "ja")]
+        [TestCase("java", 2, "va")]
+        [TestCase("java", 3, "ja")]
+        public void TakeTwoFromPosition_Test(string str, int n, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.TakeTwoFromPosition(str, n);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("badxx", true)]
+        [TestCase("xbadxx", true)]
+        [TestCase("xxbadxx", false)]
+        public void HasBad_Test(string str, bool expectedResult)
+        {
+            Strings test = new Strings();
+            bool actual = test.HasBad(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("hello", "he")]
+        [TestCase("hi", "hi")]
+        [TestCase("h", "h@")]
+        public void AtFirst_Test(string str, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.AtFirst(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        //[TestCase("last", "chars", "ls")]
+        //[TestCase("yo", "mama", "ya")]
+        //[TestCase("hi", "", "h@")]
+        //public void LastChars_Test(string str, string expectedResult)
+        //{
+        //    Strings test = new Strings();
+        //    string actual = test.LastChars(str);
+        //    Assert.AreEqual(expectedResult, actual);
+        //}
+
+        //[TestCase("abc", "dogcat", "abcat")]
+        //[TestCase("dog", "cat", "dogcat")]
+        //[TestCase("abc", "", "abc")]
+        //public void ConCat_Test(string a, string b, string expectedResult)
+        //{
+        //    Strings test = new Strings();
+        //    string actual = test.ConCat(a, b);
+        //    Assert.AreEqual(expectedResult, actual);
+        //}
+
+        [TestCase("coding", "codign")]
+        [TestCase("cat", "cta")]
+        [TestCase("ab", "ba")]
+        public string SwapLast_Test(string str, string expectedResult)
+        {
+            Strings  test = new Strings();
+            string actual = test.SwapLast(str);
             Assert.AreEqual(expectedResult, actual);
         }
     }
