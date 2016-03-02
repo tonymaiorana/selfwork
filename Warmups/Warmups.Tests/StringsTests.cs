@@ -181,34 +181,34 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
-        //[TestCase("last", "chars", "ls")]
-        //[TestCase("yo", "mama", "ya")]
-        //[TestCase("hi", "", "h@")]
-        //public void LastChars_Test(string str, string expectedResult)
-        //{
-        //    Strings test = new Strings();
-        //    string actual = test.LastChars(str);
-        //    Assert.AreEqual(expectedResult, actual);
-        //}
-
-        //[TestCase("abc", "dogcat", "abcat")]
-        //[TestCase("dog", "cat", "dogcat")]
-        //[TestCase("abc", "", "abc")]
-        //public void ConCat_Test(string a, string b, string expectedResult)
-        //{
-        //    Strings test = new Strings();
-        //    string actual = test.ConCat(a, b);
-        //    Assert.AreEqual(expectedResult, actual);
-        //}
-
-        [TestCase("coding", "codign")]
-        [TestCase("cat", "cta")]
-        [TestCase("ab", "ba")]
-        public string SwapLast_Test(string str, string expectedResult)
+        [TestCase("last", "chars", "ls")]
+        [TestCase("yo", "mama", "ya")]
+        [TestCase("hi", "", "h@")]
+        public void LastChars_Test(string a, string b, string expectedResult)
         {
-            Strings  test = new Strings();
-            string actual = test.SwapLast(str);
+            Strings test = new Strings();
+            string actual = test.LastChars(a, b);
             Assert.AreEqual(expectedResult, actual);
         }
+
+        [TestCase("abc", "cat", "abcat")]
+        [TestCase("dog", "cat", "dogcat")]
+        [TestCase("abc", "", "abc")]
+        public void ConCat_Test(string a, string b, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.ConCat(a, b);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        //[TestCase("coding", "codign")]
+        //[TestCase("cat", "cta")]
+        //[TestCase("ab", "ba")]
+        //public string SwapLast_Test(string str, string expectedResult)
+        //{
+        //    Strings  test = new Strings();
+        //    string actual = test.SwapLast(str);
+        //    Assert.AreEqual(expectedResult, actual);
+        //}
     }
 }

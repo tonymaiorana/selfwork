@@ -226,23 +226,38 @@ namespace Warmups
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        //public string LastChars(string str)
-        //{
-
-        //}
-
-        //public string ConCat(string a, string b)
-        //{
-
-        //}
-
-
-        public string SwapLast(string str)
+        public string LastChars(string a, string b)
         {
-            if (str != "")
+            if (a.Length == 0)
             {
-                return str.Substring(0, str.Length-2) + str.
+                return b.Substring(0, 1) + "@";
             }
+            if (b.Length == 0)
+            {
+                return a.Substring(0, 1) + "@";
+            }
+            return a.Substring(0, 1) + b.Substring(b.Length - 1, 1);
         }
+
+        public string ConCat(string a, string b)
+        {
+            if (a != "" && b != "")
+            {
+                if (a.EndsWith(b.Substring(0, 1)))
+                {
+                    return a + b.Remove(0, 1);
+                }
+            }
+            return a + b;
+        }
+
+
+        //public string SwapLast(string str)
+        //{
+        //    if (str != "")
+        //    {
+        //        return str.Substring(0, str.Length - 2) + str.
+        //    }
+        //}
     }
 }
