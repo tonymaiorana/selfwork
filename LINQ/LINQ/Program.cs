@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Linq;
 
 namespace LINQ
@@ -14,10 +15,19 @@ namespace LINQ
          * 
          * The customer data is hierarchical as customers have zero to many orders
          */
+
         static void Main()
         {
             //PrintOutOfStock();
-            InStockMoreThan3();
+            //InStockMoreThan3();
+            //CustomerInRegion();
+            //JustProductNames();
+            //HugeMarkUp();
+            //ToUpper();
+            //EvenNumberUnits();
+            ProductPriceNameChange();
+
+
 
             Console.ReadLine();
         }
@@ -53,5 +63,102 @@ namespace LINQ
                     product.UnitsInStock, product.UnitPrice);
             }
         }
+
+        //3. Find all customers in Washington, print their name then their orders. (Region == "WA")
+        private static void CustomerInRegion()
+        {
+            var customers = DataLoader.LoadCustomers();
+
+            var results = from c in customers
+                where c.Region == "WA"
+                select c;
+
+            foreach (var customer in results)
+            {
+                Console.WriteLine(customer.CompanyName);
+
+                foreach (var order in customer.Orders)
+                {
+                    Console.WriteLine(order.OrderID);
+                }
+            }
+
+        }
+
+        //4. Names of Products Only
+        private static void JustProductNames()
+        {
+            var name = DataLoader.LoadProducts();
+
+            var results = from n in name
+                select n.ProductName;
+
+            foreach (var product in results)
+            {
+                Console.WriteLine(product);
+            }
+        }
+
+        //5.Create a new sequence of products and unit prices where price is + 25%
+        private static void HugeMarkUp()
+        {
+            var name = DataLoader.LoadProducts();
+
+            var results = from n in name
+                select new {n.ProductName, markUp = n.UnitPrice *= 1.25m};
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.ProductName + result.markUp);
+            }
+
+        }
+
+        //6. Product name in ToUpper
+        private static void ToUpper()
+        {
+            var name = DataLoader.LoadProducts();
+
+            var results = from n in name
+                select n.ProductName.ToUpper();
+
+            foreach (var product in results)
+            {
+                Console.WriteLine(product);
+            }
+        }
+
+        //7. Even numbers of units in stock
+        private static void EvenNumberUnits()
+        {
+            var units = DataLoader.LoadProducts();
+
+            var results = from u in units
+                where u.UnitsInStock%2 == 0
+                select u.UnitsInStock;
+
+            foreach (var product in results)
+            {
+                Console.WriteLine(product);
+            }
+        }
+
+
+        //8. New Sequence of Products with ProductName, Category and UnitPrice = Price
+        private static void ProductPriceNameChange()
+        {
+            var product = DataLoader.LoadProducts();
+
+            var results = from p in product
+                select new {p.ProductName, p.Category, Price = p.UnitPrice};
+
+            foreach (var result in results)
+            {
+                Console.WriteLine($"{result.ProductName} {result.Category} {result.Price}");
+            }
+
+        }
+
+        //9.
     }
 }
