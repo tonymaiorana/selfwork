@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
@@ -201,13 +202,45 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
-        //[TestCase("coding", "codign")]
-        //[TestCase("cat", "cta")]
-        //[TestCase("ab", "ba")]
-        //public string SwapLast_Test(string str, string expectedResult)
+        [TestCase("coding", "codign")]
+        [TestCase("cat", "cta")]
+        [TestCase("ab", "ba")]
+        public void SwapLast_Test(string str, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.SwapLast(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("edited", true)]
+        [TestCase("edit", false)]
+        [TestCase("ed", true)]
+        public void FrontAgain_Test(string str, bool expectedResult)
+        {
+            Strings test = new Strings();
+            bool actual = test.FrontAgain(str);
+            Assert.AreEqual(expectedResult, actual);
+
+        }
+
+        [TestCase("Hello", "Hi", "loHi")]
+        [TestCase("Hello", "java", "ellojava")]
+        [TestCase("java", "Hello", "javaello")]
+        public void MinCat_Test(string a, string b, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.MinCat(a, b);
+            Assert.AreEqual(expectedResult, actual);
+
+        }
+
+        //[TestCase("Hello", "llo")]
+        //[TestCase("away", "aay")]
+        //[TestCase("abed", "abed")]
+        //public void TweakFront_Test(string str, string expectedResult)
         //{
-        //    Strings  test = new Strings();
-        //    string actual = test.SwapLast(str);
+        //    Strings test = new Strings();
+        //    string actual = test.TweakFront(str);
         //    Assert.AreEqual(expectedResult, actual);
         //}
     }

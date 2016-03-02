@@ -239,6 +239,12 @@ namespace Warmups
             return a.Substring(0, 1) + b.Substring(b.Length - 1, 1);
         }
 
+        /// <summary>
+        /// Exercise 19 ConCat
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public string ConCat(string a, string b)
         {
             if (a != "" && b != "")
@@ -251,13 +257,49 @@ namespace Warmups
             return a + b;
         }
 
+        /// <summary>
+        /// Exercise 20 SwapLast
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string SwapLast(string str)
+        {
+            return str.Substring(0, str.Length - 2) + str.Substring(str.Length - 1, 1) +
+                   str.Substring(str.Length - 2, 1);
+        }
 
-        //public string SwapLast(string str)
-        //{
-        //    if (str != "")
-        //    {
-        //        return str.Substring(0, str.Length - 2) + str.
-        //    }
-        //}
+        /// <summary>
+        /// Exercise 21 FrontAgain
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public bool FrontAgain(string str)
+        {
+            if (str.Substring(0, 2) == (str.Substring(str.Length - 2)))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Exercise 22 MinCat
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public string MinCat(string a, string b)
+        {
+            if (a.Length > b.Length)
+            {
+                return a.Substring(a.Length - b.Length) + b;
+            }
+
+            else if (a.Length < b.Length)
+            {
+                return a + b.Substring(b.Length - a.Length);
+            }
+            return a + b;
+        }
     }
 }
