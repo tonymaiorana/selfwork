@@ -1,6 +1,8 @@
 ﻿using System;
 using System.CodeDom;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Xml.Schema;
 
 namespace LINQ
 {
@@ -25,7 +27,10 @@ namespace LINQ
             //HugeMarkUp();
             //ToUpper();
             //EvenNumberUnits();
-            ProductPriceNameChange();
+           //ProductPriceNameChange();
+           //LessThan500();
+           //First3Elements();
+           //First3InWA();
 
 
 
@@ -159,6 +164,52 @@ namespace LINQ
 
         }
 
-        //9.
+        //9. NEED TO BE FIGURED OUT
+
+        //10.Select CustomerID, OrderID, Total where order is < $500
+        private static void LessThan500()
+        {
+            var total = DataLoader.LoadCustomers();
+
+            var results = from t in total
+                from o in t.Orders
+                where o.Total < 500m
+                select new { o.Total, t.CustomerID};
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.CustomerID + result.Total);
+            }
+        }
+
+        //11. Write a query take only first 3 elements
+        private static void First3Elements()
+        {
+            var first = DataLoader.NumbersA;
+
+            var results = first.Take(3);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result);
+            }
+        }
+
+        //12. Get only the first 3 orders from customers in WA
+        private static void First3InWA()
+        {
+            var firstThree = DataLoader.LoadCustomers();
+
+            var results = (from f in firstThree
+                          from o in f.Orders
+                where f.Region == "WA"
+                select new {f.CompanyName, o = o.OrderID}).Take(3);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.CompanyName);
+                Console.WriteLine("\t" + result.o);
+            }
+        }
     }
 }
