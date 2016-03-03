@@ -301,5 +301,49 @@ namespace Warmups
             }
             return a + b;
         }
+
+        /// <summary>
+        /// Exercise 23 TweakFront
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string TweakFront(string str)
+        {
+            if (!str.Substring(1, 1).Contains("b"))
+            {
+                str = str.Remove(1, 1);
+            }
+            
+            if (!str.StartsWith("a"))
+            {
+                str = str.Remove(0, 1);
+            }
+
+            return str;
+        }
+
+        /// <summary>
+        /// Exercise 24 StripX
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string StripX(string str)
+        {
+            if (str.StartsWith("x") && str.EndsWith("x"))
+            {
+                return str.Substring(1, str.Length - 2);
+            }
+            if (str.StartsWith("x"))
+            {
+                return str.Substring(1);
+            }
+            else if (str.EndsWith("x"))
+            {
+                return str.Substring(0, str.Length - 1);
+            }
+            return str;
+        }
+
+
     }
 }

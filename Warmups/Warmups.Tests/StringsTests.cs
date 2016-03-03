@@ -234,14 +234,24 @@ namespace Warmups.Tests
 
         }
 
-        //[TestCase("Hello", "llo")]
-        //[TestCase("away", "aay")]
-        //[TestCase("abed", "abed")]
-        //public void TweakFront_Test(string str, string expectedResult)
-        //{
-        //    Strings test = new Strings();
-        //    string actual = test.TweakFront(str);
-        //    Assert.AreEqual(expectedResult, actual);
-        //}
+        [TestCase("Hello", "llo")]
+        [TestCase("away", "aay")]
+        [TestCase("abed", "abed")]
+        public void TweakFront_Test(string str, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.TweakFront(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
+
+        [TestCase("xHix", "Hi")]
+        [TestCase("xHi", "Hi")]
+        [TestCase("Hxix", "Hxi")]
+        public void StripX_Test(string str, string expectedResult)
+        {
+            Strings test = new Strings();
+            string actual = test.StripX(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
     }
 }
