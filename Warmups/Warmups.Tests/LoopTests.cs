@@ -39,5 +39,15 @@ namespace Warmups.Tests
             int actual = trial.CountXX(str);
             Assert.AreEqual(expectedResult, actual);
         }
+
+        [TestCase("axxbb", true)]
+        [TestCase("axaxxax", false)]
+        [TestCase("xxxxx", true)]
+        public void DoubleX_Test(string str, bool expectedResult)
+        {
+            Loops trial = new Loops();
+            bool actual = trial.DoubleX(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
     }
 }

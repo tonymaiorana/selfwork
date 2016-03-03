@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,44 @@ namespace Warmups
         /// <param name="str"></param>
         /// <returns></returns>
        public int CountXX(string str)
+        {
+            int count = 0;
+            string xCheck = "xx";
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                if (str.Substring(i, 2) == xCheck)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+       /// <summary>
+       /// Exercise 04 DoubleX
+       /// </summary>
+       /// <param name="str"></param>
+       /// <returns></returns>
+       public bool DoubleX(string str)
        {
-           
+           if (str.Contains("x"))
+           {
+               for (int i = 0; i < str.Length - 1; i++)
+               {
+                   if (str.Substring(i, 1).Equals("x"))
+                   {
+                       if (str.Substring(i, 2).Equals("xx"))
+                       {
+                           return true;
+                       }
+                       else
+                       {
+                           return false;
+                       }
+                   }
+               }
+           }
+           return false;
        }
     }
 }
