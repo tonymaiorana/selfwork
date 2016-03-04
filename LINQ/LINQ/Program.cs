@@ -1,6 +1,8 @@
 ﻿using System;
 using System.CodeDom;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Xml.Schema;
 
@@ -27,11 +29,18 @@ namespace LINQ
             //HugeMarkUp();
             //ToUpper();
             //EvenNumberUnits();
-           //ProductPriceNameChange();
-           //LessThan500();
-           //First3Elements();
-           //First3InWA();
-
+            //ProductPriceNameChange();
+            //NumBLessThanNumC();
+            //LessThan500();
+            //First3Elements();
+            //First3InWA();
+            //Skip3InA();
+            //EverythingButFirstTwoInWa();
+            NumberCUntilGreaterOrEqualTo6();
+            //NumberLessThanPosition();
+            //OrdersByYearThanMonth();
+            //AllProductsInCategoryInStock();
+            //LowPriceProductEachCategory();
 
 
             Console.ReadLine();
@@ -164,7 +173,23 @@ namespace LINQ
 
         }
 
-        //9. NEED TO BE FIGURED OUT
+        //9. Return all pairs of numbers from both arrays that numberB < numberC
+        private static void NumBLessThanNumC()
+        {
+            int[] numbersB = DataLoader.NumbersB;
+            int[] numbersC = DataLoader.NumbersC;
+
+            var results = from b in numbersB
+                from c in numbersC
+                where b < c
+                select new {b, c};
+
+            foreach (var result in results)
+            {
+                Console.WriteLine($"b = {result.b}, c = {result.c}");
+            }
+        }
+             
 
         //10.Select CustomerID, OrderID, Total where order is < $500
         private static void LessThan500()
@@ -209,6 +234,146 @@ namespace LINQ
             {
                 Console.WriteLine(result.CompanyName);
                 Console.WriteLine("\t" + result.o);
+            }
+        }
+
+        //13. Skip the first 3 elements of NumbersA
+        private static void Skip3InA()
+        {
+            var numbersA = DataLoader.NumbersA;
+
+            var results = numbersA.Skip(3);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result);
+            }
+
+        }
+
+        //14. Get all except the first two orders from customers in Washington
+        private static void EverythingButFirstTwoInWa()
+        {
+            var customer = DataLoader.LoadCustomers();
+
+            var results = (from c in customer
+                from o in c.Orders
+                where c.Region == "WA"
+                select new {c.CompanyName, o.OrderID}).Skip(2);
+
+            foreach (var result in results)
+            {
+                //Console.WriteLine();
+                Console.WriteLine($"{result.CompanyName} {result.OrderID}");
+            }
+        }
+
+        //15 Get all elements in NumberC from start until element >= 6
+        private static void NumberCUntilGreaterOrEqualTo6()
+        {
+           var numbersC = DataLoader.NumbersC;
+        }
+
+        //16.Return NumbersC until number hit < position in array
+        private static void NumberLessThanPosition()
+        {
+            var numbersC = DataLoader.NumbersC;
+
+            var results = numbersC.TakeWhile((number, index) => number >= index);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result);
+            }
+
+        }
+
+        //24.Group orders by year than month
+        private static void OrdersByYearThanMonth()
+        {
+            var customers = DataLoader.LoadCustomers();
+
+            var results = from c in customers
+                select new
+                {
+                    ComapnyName = c.CompanyName,
+                    yearGroups = from o in c.Orders
+                        group o by o.OrderDate.Year
+                        into yearGroup
+                        select new
+                        {
+                            Year = yearGroup.Key,
+                            monthGroups = from order in yearGroup
+                                group order by order.OrderDate.Month
+                                into monthGroup
+                                select new
+                                {
+                                    Month = monthGroup.Key,
+                                    Orders = monthGroup
+                                }
+                        }
+                };
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.ComapnyName);
+
+                foreach (var yearGroup in result.yearGroups)
+                {
+                    Console.WriteLine("\t{0}", yearGroup.Year);
+
+                    foreach (var monthGroup in yearGroup.monthGroups)
+                    {
+                        Console.WriteLine("\t\t{0}", CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthGroup.Month));
+
+                        foreach (var order in monthGroup.Orders)
+                        {
+                            Console.WriteLine($"\t\t\t{order.OrderDate}, {order.OrderID}");
+                        }
+                    }
+                }
+            }
+        }
+
+        //33. Get a grouped list of product by category for all products in stock
+        private static void AllProductsInCategoryInStock()
+        {
+            var products = DataLoader.LoadProducts();
+
+            var results = from p in products
+                group p by p.Category
+                into pCats
+                where pCats.All(x => x.UnitsInStock > 0)
+                select new {pCats.Key, coll = pCats};
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.Key);
+                foreach (var product in result.coll)
+                {
+                    Console.WriteLine($"\t{product.UnitsInStock} - {product.ProductName}");
+                }
+            }
+        }
+
+        //38. Display lowest price product in each category
+        private static void LowPriceProductEachCategory()
+        {
+            var products = DataLoader.LoadProducts();
+
+            var results = from p in products
+                group p by p.Category
+                into pCats
+                select new
+                {
+                    pCats.Key,
+                    minprod = pCats.Min(prod => prod.UnitPrice),
+                    prodName = pCats.First(prod => prod.UnitPrice == pCats.Min(p => p.UnitPrice))
+                };
+
+            foreach (var result in results)
+            {
+                Console.WriteLine($"{result.Key} - {result.minprod:C} {result.prodName.ProductName}");
             }
         }
     }
