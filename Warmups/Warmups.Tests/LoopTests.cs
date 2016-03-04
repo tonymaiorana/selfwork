@@ -49,5 +49,15 @@ namespace Warmups.Tests
             bool actual = trial.DoubleX(str);
             Assert.AreEqual(expectedResult, actual);
         }
+
+        [TestCase("Hello", "Hlo")]
+        [TestCase("Hi", "H")]
+        [TestCase("Heeololeo", "Hello")]
+        public void EveryOther_Test(string str, string expectedResult)
+        {
+            Loops trial = new Loops();
+            string actual = trial.EveryOther(str);
+            Assert.AreEqual(expectedResult, actual);
+        }
     }
 }
