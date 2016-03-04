@@ -80,5 +80,26 @@ namespace Warmups
            }
            return false;
        }
+
+
+        /// <summary>
+        /// Exercise 05 EveryOther
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+       public string EveryOther(string str)
+        {
+            string newString = "";
+            for (int i = 0; i < str.Length-1; i+++)
+            {
+                newString = str.Substring(i, 1);
+
+                for (newString)
+                {
+                    str.Remove(1, 1);
+                }
+            }
+            return newString;
+        }
     }
 }
