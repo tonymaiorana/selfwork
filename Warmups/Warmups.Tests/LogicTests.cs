@@ -9,7 +9,7 @@ using NUnit.Framework.Constraints;
 namespace Warmups.Tests
 {
     [TestFixture]
-    class LogicTests
+    public class LogicTests
     {
         [TestCase(30, false, false)]
         [TestCase(50, false, true)]
