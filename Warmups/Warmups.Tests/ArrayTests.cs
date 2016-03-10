@@ -30,15 +30,15 @@ namespace Warmups.Tests
             Assert.AreEqual(expectedResult, actual);
         }
 
-        //[TestCase(3, new[] {3, 1, 4})]
-        //[TestCase(4, new[] {3, 1, 4, 1})]
-        //[TestCase(6, new[] {3, 1, 4, 1, 5, 9})]
-        //public void MakePi_Test(int n, int[] expectedResult)
-        //{
-        //    Arrays test = new Arrays();
-        //    int[] actual = test.MakePi(n);
-        //    Assert.AreEqual(expectedResult, actual);
-        //}
+        [TestCase(3, new[] { 3, 1, 4 })]
+        [TestCase(4, new[] { 3, 1, 4, 1 })]
+        [TestCase(6, new[] { 3, 1, 4, 1, 5, 9 })]
+        public void MakePi_Test(int n, int[] expectedResult)
+        {
+            Arrays test = new Arrays();
+            int[] actual = test.MakePi(n);
+            Assert.AreEqual(expectedResult, actual);
+        }
 
         [TestCase(new[] { 1, 2, 3 }, new[] { 7, 3 }, true)]
         [TestCase(new[] { 1, 2, 3 }, new[] { 7, 3, 2 }, false)]

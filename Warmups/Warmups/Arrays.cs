@@ -48,12 +48,32 @@ namespace Warmups
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        //public int[] MakePi(int n)
-        //{
+        public int[] MakePi(int n)
+        {
+            double pi = Math.PI;
+            int[] piDigits = new int[n];
 
-        //}
+            string piString = Convert.ToString(pi);
 
-        
+            char[] piDigitCharacters = piString.ToCharArray();
+
+            int returnArrayPosition = 0;
+            for (int i = 0; i < n + 1; i++)
+            {
+                if (piDigitCharacters[i] == '.')
+                {
+                    continue;
+                }
+                string piCharToString = piDigitCharacters[i].ToString();
+
+                piDigits[returnArrayPosition] = Convert.ToInt32(piCharToString);
+
+                returnArrayPosition++;
+            }
+            return piDigits;
+        }
+
+
         public bool CommonEnd(int[] a, int[] b)
         {
             if (a[0] == b[0] || a[a.Length - 1] == b[b.Length - 1])
