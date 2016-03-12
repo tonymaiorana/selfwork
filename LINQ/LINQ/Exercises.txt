@@ -13,7 +13,7 @@
 13. Skip the first 3 elements of NumbersA.
 14. Get all except the first two orders from customers in Washington.
 15. Get all the elements in NumbersC from the beginning until an element is greater or equal to 6.
-16. Return elements starting from the beginning of NumbersC until a number is hit that is less than its position in the array.
+k16. Return elements starting from the beginning of NumbersC until a number is hit that is less than its position in the array.
 17. Return elements from NumbersC starting from the first element divisible by 3.
 18. Order products alphabetically by name.
 19. Order products by UnitsInStock descending.
