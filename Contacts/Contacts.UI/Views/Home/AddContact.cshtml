@@ -1,0 +1,13 @@
+﻿@model List<Contacts.Models.Contact>
+@{
+    ViewBag.Title = "AddContact";
+}
+
+<h2>Add Contact</h2>
+<form class="form-horizontal" action="/Home/AddContact" method="GET">
+    Name: <input type="text" name="Name" id="Name" value=""/>
+    Phone Number: <input type="text" name="PhoneNumber" id="PhoneNumber"/>
+    <button>Add Contact</button>
+
+</form>
+
